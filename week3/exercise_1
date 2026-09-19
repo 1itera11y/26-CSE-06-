@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+
+// function checks number to strong number and returns 0 if this number is not strong  
+int strongNum(int num) {
+    int factorialNum = 0;
+    int sum = 0;
+    int defnum = num;
+    while (num > 0) {
+        factorialNum = num % 10; // 4
+        num = num / 10; // 1
+        int partOfStrNum = 1;
+        for (int i = factorialNum; i > 0; i--) { // i = 5
+            partOfStrNum = partOfStrNum * i; // partOfStrNum = 5
+        }
+        sum = partOfStrNum + sum; // sum = 5 + 0 = 5
+    }
+    if (sum == defnum) {
+        return defnum;
+    }
+    else {
+        return 0;
+    }
+}
+// finding strong numbers from a to b
+int main() {
+    int a,b;
+    scanf("%d",&a);
+    printf("\n");
+    scanf("%d",&b);
+    printf("The strong numbers are: ");
+    int k = 0;
+    for (int i = a; i <= b; i++) {
+        if (strongNum(i) != 0) {
+            printf("%d",strongNum(i));
+        }
+        if (strongNum(i+1) != 0) {
+            printf(", ");
+        }
+    }
+    return 0;
+}
