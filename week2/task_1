@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char string[100];
+    scanf("%99s", string);
+    int N = strlen(string);
+    char gnitrs[N+1];
+    for (int i = 0; i < N; ++i) {
+        gnitrs[i] = string[N - 1 - i];
+    }
+    gnitrs[N] = '\0';
+    printf("%s", gnitrs);
+    return 0;
+}
