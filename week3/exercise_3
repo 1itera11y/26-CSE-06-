@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+// function to find password 
+void pasfinder(char str[]) {
+    int attempts = 0;
+    int len = strlen(str);
+    if (len == 3) { // iterating symbols in each situation (depend on lenght of password)
+        for (char i = 32; i < 126; i++) {
+            for (char j = 32; j < 126; j++) {
+                for (char k = 32; k < 126; k++) {
+                    attempts++;
+                    if (str[0] == i && str[1] == j && str[2] == k) {
+                        
+                        printf("found = %c%c%c\n",i,j,k);
+                        printf("number of attempts = %d",attempts);
+                        return;
+                    }
+                    
+                }
+            }
+        }
+    }
+    if (len == 2) {
+        for (char i = 32; i < 126; i++) {
+            for (char j = 32; j < 126; j++) {
+                attempts++;
+                if (str[0] == i && str[1] == j) {
+                        
+                    printf("found = %c%c\n",i,j);
+                    printf("number of attempts = %d",attempts);
+                     return;
+                    
+                }
+            }
+        }
+    }
+    if (len == 1) {
+        for (char i = 32; i < 126; i++) {
+            attempts++;
+            if (str[0] == i) {        
+                printf("found = %c\n",i);
+                printf("number of attempts = %d",attempts);
+                return;
+                    
+            }
+        }
+    }
+}
+int main() {
+    char string[4] = {0};
+    scanf("%s",string);
+    pasfinder(string);
+    return 0;
+}
