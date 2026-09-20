@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+void countingLetters (char str[]) {
+    int n = strlen(str);
+    int numLet[26] = {0};
+    for (int i = 0; i < n; i++) {
+            numLet[str[i] - 'a']++;
+    }
+    for (int i = 0; i < 26; i++) {
+        if (numLet[i] > 0) {
+            printf("%c",i + 'a');
+        
+        for (int j = 0; j < numLet[i]; j++) {
+            printf(".");
+        }
+        printf("\n");
+        }
+    }
+}
+int main() {
+    char string[100];
+    fgets(string,sizeof(string), stdin);
+    countingLetters(string);
+    return 0;
+}
