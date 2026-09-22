@@ -1,0 +1,36 @@
+#include <stdio.h>
+int main() {
+    int elements = 0;
+    scanf("%d", &elements);
+    printf("DEBUG: elements = %d\n", elements);
+    if ( 1000 <= elements || 0 >= elements) {
+        printf("zeros elements");
+        return 0;
+    }
+    int array[elements];
+    for (int i = 0; i < elements; i++) {
+        scanf("%d",&array[i]);
+        printf("DEBUG: array[0] = %d, array[1] = %d, array[2] = %d\n", array[0], array[1], array[2]);
+    }
+    int res[elements];
+    int k = 0;
+    for (int i = 0; i < elements; i++) {
+        int check = 1;
+        printf("DEBUG: i = %d, k = %d, check = %d\n", i, k, check);
+        for (int j = 0; j < k; j++) {
+            if (array[i] == res[j]) {
+                check = 0;
+                break;
+            }
+        }
+        if (check == 1) {
+            res[k] = array[i];
+            printf("Adding %d to res\n", array[i]);
+            k++;
+        }
+        }
+    printf("DEBUG: k = %d\n", k);
+    for (int i = 0; i < k; i++) {
+        printf("%d ",res[i]);
+    }
+}
