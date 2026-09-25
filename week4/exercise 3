@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+union encrypt {
+    unsigned long long int num;
+    char bytes[8];
+};
+
+void encryption(union encrypt *en1) {
+    for (int i = 0; i < 7; i += 2) {
+        char temp = en1 -> bytes[i];
+        en1 -> bytes[i] = en1 -> bytes[i+1];
+        en1 -> bytes[i+1] = temp;
+    }
+
+}
+
+int main() {
+    union encrypt en1;
+    printf("Enter num:\n");
+    scanf("%llu", &en1.num);
+    printf("Original message: %llu\n", en1);
+    encryption(&en1);
+    printf("Encrypted message: %llu\n", en1.num);
+    encryption(&en1);
+    printf("Decrypted message: %llu\n", en1.num);
+    return 0;
+}
