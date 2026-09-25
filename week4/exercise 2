@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+char name[20], surname[20], month[20];
+int groupnum, day, year;
+struct student {
+    char name[20];
+    char surname[20];
+    int groupnum;
+};
+struct exam_day {
+    int day;
+    char month[20];
+    int year;
+};
+void addInfo() {
+    struct student student1;
+    struct exam_day exam_day1;
+    strcpy(student1.name, name);
+    strcpy(student1.surname, surname);
+    student1.groupnum = groupnum;
+    strcpy(exam_day1.month, month);
+    exam_day1.day = day;
+    exam_day1.year = year;
+    printf("Your info:\n");
+    printf("%s %s %d\n",student1.name,student1.surname,student1.groupnum);
+    printf("%d %s %d", exam_day1.day, exam_day1.month, exam_day1.year);
+}
+int main() {
+    printf("Enter name, surname, groupnum:\n");
+    scanf("%19s %19s %d",name,surname, &groupnum);
+    printf("Enter day, month, year of the exam\n");
+    scanf("%d %19s %d", &day, month, &year);
+    addInfo();
+    return 0;
+}
