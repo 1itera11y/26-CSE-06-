@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <string.h>
+struct Ex1 {
+    unsigned short day : 5;
+    unsigned short month : 4;
+    unsigned short year : 7;
+};
+void printstruct(struct Ex1 *ex) {
+    printf("Day: %d\nMonth: %d\nYear: %d\nSize: %d", ex -> day, ex -> month, ex -> year + 1900, sizeof(ex));
+}
+int main() {
+    struct Ex1 ex;
+    ex.day = 8;
+    ex.month = 9;
+    ex.year = 127;
+    printstruct(&ex);
+    return 0;
+}
