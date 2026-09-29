@@ -10,10 +10,8 @@ enum Ex2 {
    SUNDAY
 };
 
+char* week(int word) {
 
-int main() {
-    int word;
-    scanf("%d",word);
     switch (word) {
         case MONDAY:
         return "Monday";
@@ -32,4 +30,11 @@ int main() {
         default:
         return "";
     }
+}
+
+int main() {
+    int word;
+    scanf("%d", &word);
+    week(word);
+    printf("%s", week(word));
 }
