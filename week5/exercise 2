@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+union Ex2 {
+    unsigned int num;
+    struct {    
+        unsigned char version : 4;
+        unsigned char IHL : 4;
+        unsigned char DSCP : 6;
+        unsigned char ECN : 2;
+        unsigned short length;
+    } f1;
+} packet;
+
+
+int main() {
+    scanf("%d", &packet.num);
+    printf("version: %u\n", packet.f1.version);
+    printf("IHL: %u\n", packet.f1.IHL);
+    printf("DSCP: %u\n", packet.f1.DSCP);
+    printf("ECN: %u\n", packet.f1.ECN);
+    printf("Length: %u\n", packet.f1.length);
+    return 0;
+}
