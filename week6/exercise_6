@@ -1,0 +1,11 @@
+package com.example;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter °C temperature and I will give you it in °F");
+        float C = s.nextFloat();
+        float F = C*1.8f + 32f;
+        System.out.println(F);
+    }
+}
