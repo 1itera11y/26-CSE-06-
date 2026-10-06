@@ -1,0 +1,14 @@
+package com.example;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter 2 strings with space between them");
+        String a = s.next();
+        String b = s.next();
+        if (a.equals(b)) {
+            System.out.println("2 string are equal");
+        }
+        else {System.out.println("2 strings are NOT equal");}
+    }
+}
