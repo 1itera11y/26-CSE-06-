@@ -1,0 +1,85 @@
+package com.example;
+import java.util.Scanner;
+
+public class Main {
+    public static String tobinary(int i) {
+        String str = "";
+        while (i != 0) {
+            str = String.valueOf(i%2) + str;
+            i = i / 2;
+        }
+        return str;
+    }
+    public static String tohex(int i) {
+        String str = "";
+        String hex = "ABCDEFG";
+        while (i != 0) {
+            if (i % 16 > 9) {
+                for (int k = 10, m = 0; k < 16; k++, m++) {
+                    if (i % 16 == k) {
+                        str = hex.charAt(m) + str;
+                        i = i / 16;
+                    }
+                }
+            }
+            else {    
+                str = String.valueOf(i%16) + str;
+                i = i / 16;
+            }
+        }
+        return str;
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Write number to choose an operation:\n0 | binary -> decimal\n1 | decimal -> hexadecimal\n2 | hexadecimal -> decimal\n3 | decimal -> binary");
+        int numOfOperation = s.nextInt();
+
+        if (numOfOperation == 0) {
+            System.out.println("Enter binary number");
+            String num = s.next();
+            int res = 0;
+            for (int i = 0,k = num.length()-1; i < num.length(); i++,k--) {
+                int temp = (int)num.charAt(i) - '0';
+                res += (int) Math.pow(2,k) * temp;
+            }
+            System.out.printf("Your decimal num:\n%d", res);
+            
+        }
+        else if (numOfOperation == 1) {
+            System.out.println("Enter decimal number");
+            int num = s.nextInt();
+            System.out.printf("Your hex num:\n%s",tohex(num));
+        }
+        else if (numOfOperation == 2) {
+            System.out.println("Enter hexadecimal number");
+            String num = s.next();
+            int res = 0;
+            for (int i = 0,k = num.length()-1; i < num.length(); i++,k--) {
+                
+                if (num.charAt(i) <= '9') {
+                    int temp = (int)num.charAt(i) - '0';
+                    res += (int) Math.pow(16,k) * temp;
+                }
+                else if (num.charAt(i) > 'G') {
+                    System.err.println("Your number is not hexadecimal");
+                    break;
+                }
+                else {
+                    String hex = "ABCDEFG";
+                    for (int j = 10, m = 0; j < 16; j++, m++) {
+                        if ( (int) num.charAt(i) == hex.charAt(m)) {
+                            res += (int) Math.pow(16,k) * j;
+                        } 
+                    }
+                }
+            }
+            System.out.printf("Your decimal num:\n%d",res);
+        }
+        else if (numOfOperation == 3) {
+            System.out.println("Enter decimal number");
+            int num = s.nextInt();            
+            System.out.printf("Your binary num:\n%s",tobinary(num));
+        }
+        else {System.out.println("The operation with this number does not exist");}
+    }
+}
